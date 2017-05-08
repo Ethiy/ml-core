@@ -1,7 +1,8 @@
 #pragma once
 
 #include <vector>
-#include <initializer_list>
+
+#include <ostream>
 
 namespace ml
 {
@@ -14,7 +15,14 @@ namespace ml
             {
             public:
                 Matrix(void);
+                Matrix(Matrix const& other);
+                Matrix(Matrix && other);
                 ~Matrix(void);
+
+                Matrix & operator =(Matrix const& other) noexcept;
+                Matrix & operator =(Matrix && other) noexcept;
+
+                void swap(Matrix & other);
 
                 T& at(std::size_t const& index) noexcept;
                 T const& at(std::size_t const& index) const noexcept;
@@ -34,7 +42,12 @@ namespace ml
                 const_iterator cend(void) const noexcept;
             private:
                 std::array<T, height * width> _array;
+
+                friend std::ostream & operator <<(std::ostream & os, Matrix const& matrix);
             };
+
+            template<typename T, std::size_t height, std::size_t width>
+            void swap(Matrix & lhs, Matrix & rhs);
         }
     }
 }
