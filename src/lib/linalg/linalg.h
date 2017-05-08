@@ -1,5 +1,7 @@
 #pragma once
 
+#include "matrix.h"
+
 namespace ml
 {
     namespace core
