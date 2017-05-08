@@ -89,6 +89,21 @@ namespace ml
                 return _array.cbegin();
             }
             template<typename T, std::size_t height, std::size_t width>
+            Matrix::iterator Matrix::rbegin(void) noexcept
+            {
+                return _array.rbegin();
+            }
+            template<typename T, std::size_t height, std::size_t width>
+            Matrix::const_iterator Matrix::rbegin(void) const noexcept
+            {
+                return _array.rbegin();
+            }
+            template<typename T, std::size_t height, std::size_t width>
+            Matrix::const_iterator Matrix::crbegin(void) const noexcept
+            {
+                return _array.crbegin();
+            }
+            template<typename T, std::size_t height, std::size_t width>
             Matrix::iterator Matrix::end(void) noexcept
             {
                 return _array.end();
@@ -101,7 +116,22 @@ namespace ml
             template<typename T, std::size_t height, std::size_t width>
             Matrix::const_iterator Matrix::cend(void) const noexcept
             {
-                return _array.end();
+                return _array.cend();
+            }
+            template<typename T, std::size_t height, std::size_t width>
+            Matrix::iterator Matrix::rend(void) noexcept
+            {
+                return _array.rend();
+            }
+            template<typename T, std::size_t height, std::size_t width>
+            Matrix::const_iterator Matrix::rend(void) const noexcept
+            {
+                return _array.rend();
+            }
+            template<typename T, std::size_t height, std::size_t width>
+            Matrix::const_iterator Matrix::crend(void) const noexcept
+            {
+                return _array.crend();
             }
 
             template<typename T, std::size_t height, std::size_t width>
