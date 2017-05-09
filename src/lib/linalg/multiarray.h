@@ -9,11 +9,6 @@ namespace ml
 {
     namespace core
     {
-        std::size_t product(std::size_t... sizes)
-        {
-            return 1 * ...sizes;
-        }
-
         namespace linalg
         {
             template<typename T, std::size_t... sizes>
@@ -38,10 +33,10 @@ namespace ml
                 T* data(void) noexcept;
                 T const* data(void) const noexcept;
 
-                using iterator = std::valarray<typename T, product(sizes...)>::iterator;
-                using reverse_iterator = std::valarray<typename T, product(sizes...)>::reverse_iterator;
-                using const_iterator = std::valarray<typename T, product(sizes...)>::const_iterator;
-                using const_reverse_iterator = std::valarray<typename T, product(sizes...)>::const_reverse_iterator;
+                using iterator = std::valarray<typename T, 1 * ...sizes >::iterator;
+                using reverse_iterator = std::valarray<typename T, 1 * ...sizes >::reverse_iterator;
+                using const_iterator = std::valarray<typename T, 1 * ...sizes >::const_iterator;
+                using const_reverse_iterator = std::valarray<typename T, 1 * ...sizes >::const_reverse_iterator;
 
                 iterator begin(void) noexcept;
                 const_iterator begin(void) const noexcept;
@@ -56,7 +51,7 @@ namespace ml
                 const_iterator rend(void) const noexcept;
                 const_iterator crend(void) const noexcept;
             private:
-                std::valarray<T, product(sizes...)> _array;
+                std::valarray<T, 1 * ...sizes> _array;
 
                 friend std::ostream & operator <<(std::ostream & os, MultiArray const& array);
             };
