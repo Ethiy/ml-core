@@ -10,12 +10,13 @@ namespace ml
         {
             template<typename T, std::size_t... sizes>
             MultiArray::MultiArray(void)
+                : _array((... * sizes), T(0))
             {}
             template<typename T, std::size_t... sizes>
             MultiArray::MultiArray(std::initializer_list<T> init)
                 : _array(init)
             {
-                if(init.size() != ... * sizes)
+                if(init.size() <= (... * sizes))
                     throw std::overflow_error("The initializer list does not have the required size!");
             }
             template<typename T, std::size_t... sizes>

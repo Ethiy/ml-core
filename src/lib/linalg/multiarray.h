@@ -33,10 +33,10 @@ namespace ml
                 T* data(void) noexcept;
                 T const* data(void) const noexcept;
 
-                using iterator = std::valarray<typename T, ... * sizes >::iterator;
-                using reverse_iterator = std::valarray<typename T, ... * sizes >::reverse_iterator;
-                using const_iterator = std::valarray<typename T, ... * sizes >::const_iterator;
-                using const_reverse_iterator = std::valarray<typename T, ... * sizes >::const_reverse_iterator;
+                using iterator = std::valarray<typename T, (... * sizes) >::iterator;
+                using reverse_iterator = std::valarray<typename T, (... * sizes) >::reverse_iterator;
+                using const_iterator = std::valarray<typename T, (... * sizes) >::const_iterator;
+                using const_reverse_iterator = std::valarray<typename T, (... * sizes) >::const_reverse_iterator;
 
                 iterator begin(void) noexcept;
                 const_iterator begin(void) const noexcept;
@@ -51,7 +51,7 @@ namespace ml
                 const_iterator rend(void) const noexcept;
                 const_iterator crend(void) const noexcept;
             private:
-                std::valarray<T, ... * sizes> _array;
+                std::valarray<T, (... * sizes)> _array;
 
                 friend std::ostream & operator <<(std::ostream & os, MultiArray const& array);
             };
