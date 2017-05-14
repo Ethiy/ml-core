@@ -1,9 +1,11 @@
 dependencies:
-  pre:
-    - ./ci/circle/dependencies.sh
   override:
-    - ./ci/circle/build.sh
+    - sudo ./ci/circle/dependencies.sh
+
+compile:
+  override:
+    - sudo ./ci/circle/build.sh
 
 tests:
   override:
-    - ./ci/circle/test.sh
+    - sudo ./ci/circle/test.sh
