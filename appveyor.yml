@@ -1,0 +1,22 @@
+version: '0.0.0_{build}'
+
+image: Visual Studio 2015
+os: Visual Studio 2015
+
+install:
+  - ps: |
+        New-Item -ItemType Directory -Path .\3rParty
+        Set-Location 3rParty
+  - appveyor DownloadFile https://bitbucket.org/eigen/eigen/get/3.3.3.zip -FileName eigen.zip
+  - 7z x eigen.zip -o"C:\projects" -y
+
+before_build:
+  - ps: New-Item -ItemType Directory -Path ../build/msvc_14
+  - ps: Set-Location ../build/msvc_14
+  - cmd: cmake -G"Visual Studio 14 2015" ../..
+
+build:
+  project: C:\projects\free3ds\build\msvc_14\ml-core.sln
+
+test:
+  off
