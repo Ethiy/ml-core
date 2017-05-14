@@ -17,7 +17,7 @@ cache:
 compiler: clang
 before_install:
   - brew update
-  - brew outdated eigen || brew upgrade eigen
+  - brew install eigen
   - mkdir build
   - mkdir build/darwin
 install:
