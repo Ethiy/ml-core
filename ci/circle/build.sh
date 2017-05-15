@@ -1,6 +1,6 @@
 #! /usr/bin/env sh
 
-mdkir -p build && mkdir -p build/trusty
+mkdir -p build && mkdir -p build/trusty
 cd build/trusty
 cmake ../..
 
